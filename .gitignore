@@ -1,0 +1,16 @@
+**/bin/
+**/obj/
+.vs/
+.dotnet/
+.packages/
+TestResults/
+artifacts/
+*.user
+*.db*
+*.secret
+.env
+.env.*
+*.pfx
+*.p12
+*.pem
+*.key

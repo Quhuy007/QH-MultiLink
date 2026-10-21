@@ -1,0 +1,39 @@
+<Window x:Class="QH.MultiLinkShortener.App.QuickWindow"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="QH · Tạo link nhanh">
+ <Grid x:Name="QuickRoot" RequestedTheme="Light" Background="{ThemeResource SurfaceBrush}" Loaded="Quick_Loaded">
+  <Grid.Resources>
+   <Style x:Key="QuickAction" TargetType="Button"><Setter Property="MinHeight" Value="32"/><Setter Property="MinWidth" Value="32"/><Setter Property="Padding" Value="8,0"/><Setter Property="CornerRadius" Value="7"/><Setter Property="FontSize" Value="12"/></Style>
+  </Grid.Resources>
+  <Border BorderBrush="{ThemeResource LineBrush}" BorderThickness="1" CornerRadius="10,0,0,10">
+   <Grid>
+    <Button x:Name="EdgeTab" Background="{ThemeResource BrandBrush}" Foreground="{ThemeResource OnBrandBrush}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="0" CornerRadius="9,0,0,9" Click="Open_Click" AutomationProperties.Name="Mở cửa sổ tạo link nhanh" ToolTipService.ToolTip="Tạo link nhanh · Nhấn chuột phải để mở giao diện chính hoặc thoát">
+     <Button.ContextFlyout><MenuFlyout><MenuFlyoutItem Text="Mở giao diện chính" Click="Main_Click"/><MenuFlyoutItem Text="Tạo link nhanh" Click="Open_Click"/><MenuFlyoutSeparator/><MenuFlyoutItem Text="Thoát ứng dụng" Click="Exit_Click"/></MenuFlyout></Button.ContextFlyout>
+     <FontIcon Glyph="&#xE71B;" FontSize="20"/>
+    </Button>
+    <Button x:Name="BusyTab" Visibility="Collapsed" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="0" CornerRadius="9,0,0,9" Click="Cancel_Click" AutomationProperties.Name="Đang tạo link, nhấn để hủy" ToolTipService.ToolTip="Đang tạo link · Nhấn để hủy"><ProgressRing x:Name="BusyRing" Width="24" Height="24" IsActive="False"/></Button>
+    <Grid x:Name="InputPanel" Visibility="Collapsed" Padding="7" RowSpacing="6" ColumnSpacing="6">
+     <Grid.RowDefinitions><RowDefinition Height="32"/><RowDefinition Height="32"/></Grid.RowDefinitions>
+     <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="32"/></Grid.ColumnDefinitions>
+     <TextBox x:Name="QuickUrl" PlaceholderText="Dán URL của bạn…" MinHeight="32" FontSize="13" Padding="7,4" CornerRadius="6" TextChanged="Url_Changed" AutomationProperties.Name="URL cần rút gọn" ToolTipService.ToolTip="Nhập URL http:// hoặc https://. Enter tạo link; Tab để nhập mật khẩu tùy chọn."/>
+     <Button Grid.Column="1" Style="{StaticResource QuickAction}" Background="{ThemeResource BrandBrush}" Foreground="{ThemeResource OnBrandBrush}" Click="Create_Click" AutomationProperties.Name="Tạo link" ToolTipService.ToolTip="Tạo link với dịch vụ mặc định; mật khẩu dùng dịch vụ tương thích"><FontIcon Glyph="&#xE72A;" FontSize="13"/></Button>
+     <PasswordBox x:Name="QuickPassword" Grid.Row="1" PlaceholderText="Mật khẩu (tùy chọn)" Visibility="Collapsed" MinHeight="32" FontSize="12" Padding="7,4" CornerRadius="6" PasswordRevealMode="Hidden" AutomationProperties.Name="Mật khẩu tùy chọn" ToolTipService.ToolTip="Để trống và Enter nếu không cần mật khẩu. Nếu có: ít nhất 8 ký tự gồm chữ, số và ký tự đặc biệt."/>
+     <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource QuickAction}" Click="Hide_Click" AutomationProperties.Name="Ẩn cửa sổ nhanh" ToolTipService.ToolTip="Ẩn · Escape"><FontIcon Glyph="&#xE76C;" FontSize="13"/></Button>
+    </Grid>
+    <Grid x:Name="ResultPanel" Visibility="Collapsed" Padding="7" RowSpacing="6">
+     <Grid.RowDefinitions><RowDefinition Height="32"/><RowDefinition Height="32"/></Grid.RowDefinitions>
+     <TextBox x:Name="ShortLink" IsReadOnly="True" MinHeight="32" Padding="7,4" FontSize="13" CornerRadius="6" Foreground="{ThemeResource BrandBrush}" AutomationProperties.Name="Link đã rút gọn"/>
+     <Grid Grid.Row="1" ColumnSpacing="6"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+      <Button x:Name="CopyButton" Content="Sao chép" Style="{StaticResource QuickAction}" Background="{ThemeResource BrandBrush}" Foreground="{ThemeResource OnBrandBrush}" HorizontalAlignment="Stretch" Click="Copy_Click"/>
+      <Button Grid.Column="1" Content="Ẩn" Style="{StaticResource QuickAction}" HorizontalAlignment="Stretch" Click="Hide_Click"/>
+     </Grid>
+    </Grid>
+    <Grid x:Name="ErrorPanel" Visibility="Collapsed" Padding="7" RowSpacing="4">
+     <Grid.RowDefinitions><RowDefinition Height="*"/><RowDefinition Height="32"/></Grid.RowDefinitions>
+     <TextBlock x:Name="ErrorText" Foreground="{ThemeResource ErrorBrush}" FontSize="12" TextWrapping="Wrap" MaxLines="2" TextTrimming="CharacterEllipsis" AutomationProperties.LiveSetting="Assertive"/>
+     <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="6"><Button Content="Sửa lại" Style="{StaticResource QuickAction}" Click="Retry_Click"/><Button Content="Mở app" Style="{StaticResource QuickAction}" Click="Main_Click"/><Button Content="Ẩn" Style="{StaticResource QuickAction}" Click="Hide_Click"/></StackPanel>
+    </Grid>
+   </Grid>
+  </Border>
+ </Grid>
+</Window>

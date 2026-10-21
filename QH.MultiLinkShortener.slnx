@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/QH.MultiLinkShortener.App/QH.MultiLinkShortener.App.csproj" />
+    <Project Path="src/QH.MultiLinkShortener.Core/QH.MultiLinkShortener.Core.csproj" />
+    <Project Path="src/QH.MultiLinkShortener.Infrastructure/QH.MultiLinkShortener.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/QH.MultiLinkShortener.Tests/QH.MultiLinkShortener.Tests.csproj" />
+  </Folder>
+  <Folder Name="/tools/">
+    <Project Path="tools/QH.SmokeCheck/QH.SmokeCheck.csproj" />
+  </Folder>
+</Solution>

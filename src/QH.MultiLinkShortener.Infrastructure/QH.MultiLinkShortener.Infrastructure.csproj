@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><TargetFramework>net10.0-windows10.0.19041.0</TargetFramework></PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../QH.MultiLinkShortener.Core/QH.MultiLinkShortener.Core.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.13" />
+    <PackageReference Include="Microsoft.Extensions.Http.Resilience" Version="10.11.0" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.13" />
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="10.0.13" />
+    <PackageReference Include="QRCoder" Version="1.8.1" />
+  </ItemGroup>
+</Project>
